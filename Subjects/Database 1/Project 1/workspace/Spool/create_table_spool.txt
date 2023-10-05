@@ -1,0 +1,75 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Project_1
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use database Project_1;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| Project_1          |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use Project_1;
+Database changed
+mysql> source create_tables.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_project_1 |
++---------------------+
+| DEPARTMENT          |
+| DEPENDENT           |
+| DEPT_LOCATIONS      |
+| EMPLOYEE            |
+| PROJECT             |
+| WORKS_ON            |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> exit
