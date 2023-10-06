@@ -1,6 +1,6 @@
 CREATE TABLE EMPLOYEE
 ( Fname           VARCHAR(10)   NOT NULL,
-  Minit           CHAR,
+  Minit           CHAR(1),
   Lname           VARCHAR(20)      NOT NULL,
   Ssn             CHAR(9)          NOT NULL,
   Bdate           DATE,
@@ -47,7 +47,7 @@ FOREIGN KEY (Pno) REFERENCES PROJECT(Pnumber) );
 CREATE TABLE DEPENDENT
 ( Essn            CHAR(9)           NOT NULL,
   Dependent_name  VARCHAR(15)       NOT NULL,
-  Sex             CHAR,
+  Sex             CHAR(1),
   Bdate           DATE,
   Relationship    VARCHAR(8),
 PRIMARY KEY (Essn, Dependent_name),
