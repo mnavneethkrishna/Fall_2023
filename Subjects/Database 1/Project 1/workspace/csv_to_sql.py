@@ -1,6 +1,7 @@
 import mysql.connector
 import csv
 
+
 # Define your database connection parameters
 db_config = {
     "host": "localhost",
@@ -26,46 +27,42 @@ try:
         # Iterate through the rows in the .csv file
         for row in csv_reader:
             # Extract data from the row
-            Fname = row[0].strip("'")
-            Minit = row[1].strip("'")
-            Lname = row[2].strip("'")
-            Ssn = row[3].strip("'")
+            Fname = row[0]
+            Fname = Fname.replace("'","")
+            Minit = row[1]
+            Minit = Minit.replace("'","")
+            Minit = Minit.replace(" ","")
+            Lname = row[2]
+            Lname = Lname.replace("'","")
+            Lname = Lname.replace(" ","")
+            Ssn = row[3]
+            Ssn = Ssn.replace("'","")
+            Ssn = Ssn.replace(" ","")
             
-            # Check if there are enough values in the row
-            if len(row) >= 5:
-                Bdate_str = row[4].strip("'")
-            else:
-                Bdate_str = ""
+            Birthday = row[4]
+            Birthday = Birthday.replace("'","")
+            Birthday = Birthday.replace(" ","")
+
+            Address = row[5] + " " +row[6] + " " + row[7]
+            Address = Address.replace("'", "")
             
-            # Check if there are enough values in the row
-            if len(row) >= 6:
-                Address = row[5].strip("'")
-            else:
-                Address = ""
+            Sex = row[8]
+            Sex = Sex.replace("'", "")
+            Sex = Sex.replace(" ","")
             
-            # Check if there are enough values in the row
-            if len(row) >= 7:
-                Sex = row[6].strip("'")
-            else:
-                Sex = ""
+            Salary = row[9]
+            Salary = float(Salary)
+            Salary = round(Salary, 2)
             
-            # Check if there are enough values in the row
-            if len(row) >= 8:
-                Salary = float(row[7].strip("'")) if row[7].strip("'") != "null" else None
-            else:
-                Salary = None
-            
-            # Check if there are enough values in the row
-            if len(row) >= 9:
-                Super_ssn = row[8].strip("'") if row[8].strip("'") != "null" else None
-            else:
-                Super_ssn = None
-            
-            # Check if there are enough values in the row
-            if len(row) >= 10:
-                Dno = int(row[9])
-            else:
-                Dno = None
+            Super_ssn = row[10]
+            Super_ssn = Super_ssn.replace("'","")
+            Super_ssn = Super_ssn.replace(" ","")
+
+
+            Dno = row[11]
+            Dno = Dno.replace("'","")
+            Dno = Dno.replace(" ","")
+            Dno = int(Dno)  
 
             # Define the SQL INSERT statement using parameterized query
             insert_query = """
@@ -74,7 +71,7 @@ try:
             """
 
             # Execute the INSERT statement with data from the .csv file
-            cursor.execute(insert_query, (Fname, Minit, Lname, Ssn, Bdate_str, Address, Sex, Salary, Super_ssn, Dno))
+            cursor.execute(insert_query, (Fname, Minit, Lname, Ssn, Birthday, Address, Sex, Salary, Super_ssn, Dno))
             
             # Commit the transaction after each INSERT
             connection.commit()
