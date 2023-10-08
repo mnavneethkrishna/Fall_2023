@@ -1,0 +1,1114 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 108
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use nxk0459;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_nxk0459 |
++-------------------+
+| DEPARTMENT        |
+| DEPENDENT         |
+| DEPT_LOCATIONS    |
+| EMPLOYEE          |
+| PROJECT           |
+| WORKS_ON          |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select Bdate, Address from employee where Fname="John" and Minit="B" and Lname="Smith";
++------------+-------------------------+
+| Bdate      | Address                 |
++------------+-------------------------+
+| 1955-01-09 |  731 Fondren Houston TX |
++------------+-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select Fname, Lname, Address from employee, department where Dname="Reseearch" and Dnumber=Dno;
+Empty set (0.01 sec)
+
+mysql> select Fname, Lname, Address from employee, department where Dname="Research" and Dnumber=Dno;
++---------+----------+---------------------------------+
+| Fname   | Lname    | Address                         |
++---------+----------+---------------------------------+
+| John    | Smith    |  731 Fondren Houston TX         |
+| Frank   | Wong     |  638 Voss Houston TX            |
+| Joyce   | English  |  5631 Rice Oak Houston TX       |
+| Andrea  | Sondrini |  1450 Worthington St Houston TX |
+| Michael | Morgan   |  26 Sunset Blvd Miami FL        |
+| Ramesh  | Narayan  |  971 Fire Oak Humble TX         |
+| James   | Miller   |  13 Fifth St Seattle WA         |
++---------+----------+---------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select Pnumber, Dnum, Lname, Address, Bdate from project, department, employee where Dnum=Dnumber and Mgr_ssn=Ssn and Plocation="Stafford";
++---------+------+---------+------------------------+------------+
+| Pnumber | Dnum | Lname   | Address                | Bdate      |
++---------+------+---------+------------------------+------------+
+|      10 |    4 | Wallace |  291 Berry Bellaire TX | 1931-06-20 |
+|      30 |    4 | Wallace |  291 Berry Bellaire TX | 1931-06-20 |
++---------+------+---------+------------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select e.Fname, E.Lname, S.Fname, S.Lname from employee as E, employee as S where E.Super_ssn = S.Ssn;
++-----------+-----------+----------+----------+
+| Fname     | Lname     | Fname    | Lname    |
++-----------+-----------+----------+----------+
+| Alex      | Yu        | Alex     | Freed    |
+| Sunil     | Gupta     | Jared    | James    |
+| Jon       | Jones     | Jared    | James    |
+| Justin    | Mark      | Jared    | James    |
+| Brad      | Knight    | Jared    | James    |
+| Cameron   | Thirteen  | Ahmad    | Jabbar   |
+| John      | Smith     | Frank    | Wong     |
+| Debra     | Hall      | Nandita  | Ball     |
+| Richard   | Koelbel   | Roy      | Lewallen |
+| Josh      | Zell      | Evan     | Wallis   |
+| Andy      | Vile      | Evan     | Wallis   |
+| Tom       | Brand     | Evan     | Wallis   |
+| Jenny     | Vos       | Josh     | Zell     |
+| Chris     | Carter    | Josh     | Zell     |
+| John      | Ed        | Nandita  | Ball     |
+| Jennifer  | Joy       | Red      | Bacher   |
+| willie    | Mary      | Juan     | Linda    |
+| Christina | Hisel     | John     | Smith    |
+| Erin      | Maxfield  | John     | James    |
+| Wilson    | Holmes    | John     | James    |
+| Jake      | Sheen     | Juan     | Linda    |
+| Megan     | Jones     | Bob      | Bender   |
+| Jisha     | Carpenter | Red      | Bacher   |
+| Jeff      | Chase     | Kim      | Grace    |
+| Jose      | Barbara   | Alex     | Freed    |
+| Leonard   | Moody     | Alex     | Freed    |
+| Cindy     | Burklow   | Alec     | Best     |
+| Gregory   | Laurie    | Alex     | Freed    |
+| Kim       | Ted       | Roy      | Lewallen |
+| Bonnie    | Bays      | Alex     | Freed    |
+| Alec      | Best      | Alex     | Freed    |
+| Sam       | Snedden   | Alex     | Freed    |
+| Joyce     | English   | Frank    | Wong     |
+| Nandita   | Ball      | John     | James    |
+| Andrea    | Sondrini  | Bonnie   | Bays     |
+| Michael   | Morgan    | Sammy    | Hall     |
+| Jill      | Jarvis    | Bob      | Bender   |
+| Kate      | King      | Bob      | Bender   |
+| Lyle      | Leslie    | Jill     | Jarvis   |
+| Billie    | King      | Lyle     | Leslie   |
+| Jon       | Kramer    | Lyle     | Leslie   |
+| Ray       | King      | Billie   | King     |
+| Gerald    | Small     | Kate     | King     |
+| Arnold    | Head      | Kate     | King     |
+| Helga     | Pataki    | Kate     | King     |
+| Naveen    | Drew      | Gerald   | Small    |
+| Carl      | Reedy     | Naveen   | Drew     |
+| Sammy     | Hall      | Carl     | Reedy    |
+| Red       | Bacher    | Sammy    | Hall     |
+| Ramesh    | Narayan   | Frank    | Wong     |
+| Penny     | Wolowitz  | John     | Ed       |
+| James     | Miller    | Roy      | Lewallen |
+| Zach      | Geller    | Sam      | Snedden  |
+| Ahmad     | Jabbar    | Jennifer | Wallace  |
+| Alicia    | Zelaya    | Jennifer | Wallace  |
+| Roy       | Lewallen  | Bob      | Bender   |
++-----------+-----------+----------+----------+
+56 rows in set (0.01 sec)
+
+mysql> select Ssn from employee;
++-----------+
+| Ssn       |
++-----------+
+| 292740167 |
+| 888665151 |
+| 110110110 |
+| 111422203 |
+| 214370999 |
+| 242916639 |
+| 987654321 |
+| 987987987 |
+| 999887777 |
+| 123456789 |
+| 333445555 |
+| 453453453 |
+| 614370310 |
+| 636669233 |
+| 666884444 |
+| 906218888 |
+| 001614905 |
+| 111111100 |
+| 111111101 |
+| 111111102 |
+| 111111103 |
+| 202843824 |
+| 222333444 |
+| 241625699 |
+| 245239264 |
+| 333333300 |
+| 333333301 |
+| 343434344 |
+| 432765098 |
+| 555555501 |
+| 673466642 |
+| 913353347 |
+| 101248268 |
+| 222222200 |
+| 222222201 |
+| 222222202 |
+| 222222203 |
+| 222222204 |
+| 222222205 |
+| 349273344 |
+| 444212096 |
+| 444444400 |
+| 444444401 |
+| 444444402 |
+| 444444403 |
+| 913323708 |
+| 223344667 |
+| 242535609 |
+| 254937381 |
+| 444222666 |
+| 555555500 |
+| 666666600 |
+| 666666601 |
+| 666666602 |
+| 666666603 |
+| 666666604 |
+| 666666605 |
+| 666666606 |
+| 666666607 |
+| 666666608 |
+| 666666609 |
+| 666666610 |
+| 666666611 |
+| 666666612 |
+| 666666613 |
+| 849934919 |
+| 999999999 |
+| 112244668 |
+| 234234234 |
+| 398172999 |
++-----------+
+70 rows in set (0.00 sec)
+
+mysql> select Ssn, Dname from employee, department;
++-----------+----------------+
+| Ssn       | Dname          |
++-----------+----------------+
+| 292740167 | Software       |
+| 292740167 | Sales          |
+| 292740167 | Research       |
+| 292740167 | QA             |
+| 292740167 | Networking     |
+| 292740167 | HR             |
+| 292740167 | Headquarters   |
+| 292740167 | Hardware       |
+| 292740167 | Administration |
+| 888665151 | Software       |
+| 888665151 | Sales          |
+| 888665151 | Research       |
+| 888665151 | QA             |
+| 888665151 | Networking     |
+| 888665151 | HR             |
+| 888665151 | Headquarters   |
+| 888665151 | Hardware       |
+| 888665151 | Administration |
+| 110110110 | Software       |
+| 110110110 | Sales          |
+| 110110110 | Research       |
+| 110110110 | QA             |
+| 110110110 | Networking     |
+| 110110110 | HR             |
+| 110110110 | Headquarters   |
+| 110110110 | Hardware       |
+| 110110110 | Administration |
+| 111422203 | Software       |
+| 111422203 | Sales          |
+| 111422203 | Research       |
+| 111422203 | QA             |
+| 111422203 | Networking     |
+| 111422203 | HR             |
+| 111422203 | Headquarters   |
+| 111422203 | Hardware       |
+| 111422203 | Administration |
+| 214370999 | Software       |
+| 214370999 | Sales          |
+| 214370999 | Research       |
+| 214370999 | QA             |
+| 214370999 | Networking     |
+| 214370999 | HR             |
+| 214370999 | Headquarters   |
+| 214370999 | Hardware       |
+| 214370999 | Administration |
+| 242916639 | Software       |
+| 242916639 | Sales          |
+| 242916639 | Research       |
+| 242916639 | QA             |
+| 242916639 | Networking     |
+| 242916639 | HR             |
+| 242916639 | Headquarters   |
+| 242916639 | Hardware       |
+| 242916639 | Administration |
+| 987654321 | Software       |
+| 987654321 | Sales          |
+| 987654321 | Research       |
+| 987654321 | QA             |
+| 987654321 | Networking     |
+| 987654321 | HR             |
+| 987654321 | Headquarters   |
+| 987654321 | Hardware       |
+| 987654321 | Administration |
+| 987987987 | Software       |
+| 987987987 | Sales          |
+| 987987987 | Research       |
+| 987987987 | QA             |
+| 987987987 | Networking     |
+| 987987987 | HR             |
+| 987987987 | Headquarters   |
+| 987987987 | Hardware       |
+| 987987987 | Administration |
+| 999887777 | Software       |
+| 999887777 | Sales          |
+| 999887777 | Research       |
+| 999887777 | QA             |
+| 999887777 | Networking     |
+| 999887777 | HR             |
+| 999887777 | Headquarters   |
+| 999887777 | Hardware       |
+| 999887777 | Administration |
+| 123456789 | Software       |
+| 123456789 | Sales          |
+| 123456789 | Research       |
+| 123456789 | QA             |
+| 123456789 | Networking     |
+| 123456789 | HR             |
+| 123456789 | Headquarters   |
+| 123456789 | Hardware       |
+| 123456789 | Administration |
+| 333445555 | Software       |
+| 333445555 | Sales          |
+| 333445555 | Research       |
+| 333445555 | QA             |
+| 333445555 | Networking     |
+| 333445555 | HR             |
+| 333445555 | Headquarters   |
+| 333445555 | Hardware       |
+| 333445555 | Administration |
+| 453453453 | Software       |
+| 453453453 | Sales          |
+| 453453453 | Research       |
+| 453453453 | QA             |
+| 453453453 | Networking     |
+| 453453453 | HR             |
+| 453453453 | Headquarters   |
+| 453453453 | Hardware       |
+| 453453453 | Administration |
+| 614370310 | Software       |
+| 614370310 | Sales          |
+| 614370310 | Research       |
+| 614370310 | QA             |
+| 614370310 | Networking     |
+| 614370310 | HR             |
+| 614370310 | Headquarters   |
+| 614370310 | Hardware       |
+| 614370310 | Administration |
+| 636669233 | Software       |
+| 636669233 | Sales          |
+| 636669233 | Research       |
+| 636669233 | QA             |
+| 636669233 | Networking     |
+| 636669233 | HR             |
+| 636669233 | Headquarters   |
+| 636669233 | Hardware       |
+| 636669233 | Administration |
+| 666884444 | Software       |
+| 666884444 | Sales          |
+| 666884444 | Research       |
+| 666884444 | QA             |
+| 666884444 | Networking     |
+| 666884444 | HR             |
+| 666884444 | Headquarters   |
+| 666884444 | Hardware       |
+| 666884444 | Administration |
+| 906218888 | Software       |
+| 906218888 | Sales          |
+| 906218888 | Research       |
+| 906218888 | QA             |
+| 906218888 | Networking     |
+| 906218888 | HR             |
+| 906218888 | Headquarters   |
+| 906218888 | Hardware       |
+| 906218888 | Administration |
+| 001614905 | Software       |
+| 001614905 | Sales          |
+| 001614905 | Research       |
+| 001614905 | QA             |
+| 001614905 | Networking     |
+| 001614905 | HR             |
+| 001614905 | Headquarters   |
+| 001614905 | Hardware       |
+| 001614905 | Administration |
+| 111111100 | Software       |
+| 111111100 | Sales          |
+| 111111100 | Research       |
+| 111111100 | QA             |
+| 111111100 | Networking     |
+| 111111100 | HR             |
+| 111111100 | Headquarters   |
+| 111111100 | Hardware       |
+| 111111100 | Administration |
+| 111111101 | Software       |
+| 111111101 | Sales          |
+| 111111101 | Research       |
+| 111111101 | QA             |
+| 111111101 | Networking     |
+| 111111101 | HR             |
+| 111111101 | Headquarters   |
+| 111111101 | Hardware       |
+| 111111101 | Administration |
+| 111111102 | Software       |
+| 111111102 | Sales          |
+| 111111102 | Research       |
+| 111111102 | QA             |
+| 111111102 | Networking     |
+| 111111102 | HR             |
+| 111111102 | Headquarters   |
+| 111111102 | Hardware       |
+| 111111102 | Administration |
+| 111111103 | Software       |
+| 111111103 | Sales          |
+| 111111103 | Research       |
+| 111111103 | QA             |
+| 111111103 | Networking     |
+| 111111103 | HR             |
+| 111111103 | Headquarters   |
+| 111111103 | Hardware       |
+| 111111103 | Administration |
+| 202843824 | Software       |
+| 202843824 | Sales          |
+| 202843824 | Research       |
+| 202843824 | QA             |
+| 202843824 | Networking     |
+| 202843824 | HR             |
+| 202843824 | Headquarters   |
+| 202843824 | Hardware       |
+| 202843824 | Administration |
+| 222333444 | Software       |
+| 222333444 | Sales          |
+| 222333444 | Research       |
+| 222333444 | QA             |
+| 222333444 | Networking     |
+| 222333444 | HR             |
+| 222333444 | Headquarters   |
+| 222333444 | Hardware       |
+| 222333444 | Administration |
+| 241625699 | Software       |
+| 241625699 | Sales          |
+| 241625699 | Research       |
+| 241625699 | QA             |
+| 241625699 | Networking     |
+| 241625699 | HR             |
+| 241625699 | Headquarters   |
+| 241625699 | Hardware       |
+| 241625699 | Administration |
+| 245239264 | Software       |
+| 245239264 | Sales          |
+| 245239264 | Research       |
+| 245239264 | QA             |
+| 245239264 | Networking     |
+| 245239264 | HR             |
+| 245239264 | Headquarters   |
+| 245239264 | Hardware       |
+| 245239264 | Administration |
+| 333333300 | Software       |
+| 333333300 | Sales          |
+| 333333300 | Research       |
+| 333333300 | QA             |
+| 333333300 | Networking     |
+| 333333300 | HR             |
+| 333333300 | Headquarters   |
+| 333333300 | Hardware       |
+| 333333300 | Administration |
+| 333333301 | Software       |
+| 333333301 | Sales          |
+| 333333301 | Research       |
+| 333333301 | QA             |
+| 333333301 | Networking     |
+| 333333301 | HR             |
+| 333333301 | Headquarters   |
+| 333333301 | Hardware       |
+| 333333301 | Administration |
+| 343434344 | Software       |
+| 343434344 | Sales          |
+| 343434344 | Research       |
+| 343434344 | QA             |
+| 343434344 | Networking     |
+| 343434344 | HR             |
+| 343434344 | Headquarters   |
+| 343434344 | Hardware       |
+| 343434344 | Administration |
+| 432765098 | Software       |
+| 432765098 | Sales          |
+| 432765098 | Research       |
+| 432765098 | QA             |
+| 432765098 | Networking     |
+| 432765098 | HR             |
+| 432765098 | Headquarters   |
+| 432765098 | Hardware       |
+| 432765098 | Administration |
+| 555555501 | Software       |
+| 555555501 | Sales          |
+| 555555501 | Research       |
+| 555555501 | QA             |
+| 555555501 | Networking     |
+| 555555501 | HR             |
+| 555555501 | Headquarters   |
+| 555555501 | Hardware       |
+| 555555501 | Administration |
+| 673466642 | Software       |
+| 673466642 | Sales          |
+| 673466642 | Research       |
+| 673466642 | QA             |
+| 673466642 | Networking     |
+| 673466642 | HR             |
+| 673466642 | Headquarters   |
+| 673466642 | Hardware       |
+| 673466642 | Administration |
+| 913353347 | Software       |
+| 913353347 | Sales          |
+| 913353347 | Research       |
+| 913353347 | QA             |
+| 913353347 | Networking     |
+| 913353347 | HR             |
+| 913353347 | Headquarters   |
+| 913353347 | Hardware       |
+| 913353347 | Administration |
+| 101248268 | Software       |
+| 101248268 | Sales          |
+| 101248268 | Research       |
+| 101248268 | QA             |
+| 101248268 | Networking     |
+| 101248268 | HR             |
+| 101248268 | Headquarters   |
+| 101248268 | Hardware       |
+| 101248268 | Administration |
+| 222222200 | Software       |
+| 222222200 | Sales          |
+| 222222200 | Research       |
+| 222222200 | QA             |
+| 222222200 | Networking     |
+| 222222200 | HR             |
+| 222222200 | Headquarters   |
+| 222222200 | Hardware       |
+| 222222200 | Administration |
+| 222222201 | Software       |
+| 222222201 | Sales          |
+| 222222201 | Research       |
+| 222222201 | QA             |
+| 222222201 | Networking     |
+| 222222201 | HR             |
+| 222222201 | Headquarters   |
+| 222222201 | Hardware       |
+| 222222201 | Administration |
+| 222222202 | Software       |
+| 222222202 | Sales          |
+| 222222202 | Research       |
+| 222222202 | QA             |
+| 222222202 | Networking     |
+| 222222202 | HR             |
+| 222222202 | Headquarters   |
+| 222222202 | Hardware       |
+| 222222202 | Administration |
+| 222222203 | Software       |
+| 222222203 | Sales          |
+| 222222203 | Research       |
+| 222222203 | QA             |
+| 222222203 | Networking     |
+| 222222203 | HR             |
+| 222222203 | Headquarters   |
+| 222222203 | Hardware       |
+| 222222203 | Administration |
+| 222222204 | Software       |
+| 222222204 | Sales          |
+| 222222204 | Research       |
+| 222222204 | QA             |
+| 222222204 | Networking     |
+| 222222204 | HR             |
+| 222222204 | Headquarters   |
+| 222222204 | Hardware       |
+| 222222204 | Administration |
+| 222222205 | Software       |
+| 222222205 | Sales          |
+| 222222205 | Research       |
+| 222222205 | QA             |
+| 222222205 | Networking     |
+| 222222205 | HR             |
+| 222222205 | Headquarters   |
+| 222222205 | Hardware       |
+| 222222205 | Administration |
+| 349273344 | Software       |
+| 349273344 | Sales          |
+| 349273344 | Research       |
+| 349273344 | QA             |
+| 349273344 | Networking     |
+| 349273344 | HR             |
+| 349273344 | Headquarters   |
+| 349273344 | Hardware       |
+| 349273344 | Administration |
+| 444212096 | Software       |
+| 444212096 | Sales          |
+| 444212096 | Research       |
+| 444212096 | QA             |
+| 444212096 | Networking     |
+| 444212096 | HR             |
+| 444212096 | Headquarters   |
+| 444212096 | Hardware       |
+| 444212096 | Administration |
+| 444444400 | Software       |
+| 444444400 | Sales          |
+| 444444400 | Research       |
+| 444444400 | QA             |
+| 444444400 | Networking     |
+| 444444400 | HR             |
+| 444444400 | Headquarters   |
+| 444444400 | Hardware       |
+| 444444400 | Administration |
+| 444444401 | Software       |
+| 444444401 | Sales          |
+| 444444401 | Research       |
+| 444444401 | QA             |
+| 444444401 | Networking     |
+| 444444401 | HR             |
+| 444444401 | Headquarters   |
+| 444444401 | Hardware       |
+| 444444401 | Administration |
+| 444444402 | Software       |
+| 444444402 | Sales          |
+| 444444402 | Research       |
+| 444444402 | QA             |
+| 444444402 | Networking     |
+| 444444402 | HR             |
+| 444444402 | Headquarters   |
+| 444444402 | Hardware       |
+| 444444402 | Administration |
+| 444444403 | Software       |
+| 444444403 | Sales          |
+| 444444403 | Research       |
+| 444444403 | QA             |
+| 444444403 | Networking     |
+| 444444403 | HR             |
+| 444444403 | Headquarters   |
+| 444444403 | Hardware       |
+| 444444403 | Administration |
+| 913323708 | Software       |
+| 913323708 | Sales          |
+| 913323708 | Research       |
+| 913323708 | QA             |
+| 913323708 | Networking     |
+| 913323708 | HR             |
+| 913323708 | Headquarters   |
+| 913323708 | Hardware       |
+| 913323708 | Administration |
+| 223344667 | Software       |
+| 223344667 | Sales          |
+| 223344667 | Research       |
+| 223344667 | QA             |
+| 223344667 | Networking     |
+| 223344667 | HR             |
+| 223344667 | Headquarters   |
+| 223344667 | Hardware       |
+| 223344667 | Administration |
+| 242535609 | Software       |
+| 242535609 | Sales          |
+| 242535609 | Research       |
+| 242535609 | QA             |
+| 242535609 | Networking     |
+| 242535609 | HR             |
+| 242535609 | Headquarters   |
+| 242535609 | Hardware       |
+| 242535609 | Administration |
+| 254937381 | Software       |
+| 254937381 | Sales          |
+| 254937381 | Research       |
+| 254937381 | QA             |
+| 254937381 | Networking     |
+| 254937381 | HR             |
+| 254937381 | Headquarters   |
+| 254937381 | Hardware       |
+| 254937381 | Administration |
+| 444222666 | Software       |
+| 444222666 | Sales          |
+| 444222666 | Research       |
+| 444222666 | QA             |
+| 444222666 | Networking     |
+| 444222666 | HR             |
+| 444222666 | Headquarters   |
+| 444222666 | Hardware       |
+| 444222666 | Administration |
+| 555555500 | Software       |
+| 555555500 | Sales          |
+| 555555500 | Research       |
+| 555555500 | QA             |
+| 555555500 | Networking     |
+| 555555500 | HR             |
+| 555555500 | Headquarters   |
+| 555555500 | Hardware       |
+| 555555500 | Administration |
+| 666666600 | Software       |
+| 666666600 | Sales          |
+| 666666600 | Research       |
+| 666666600 | QA             |
+| 666666600 | Networking     |
+| 666666600 | HR             |
+| 666666600 | Headquarters   |
+| 666666600 | Hardware       |
+| 666666600 | Administration |
+| 666666601 | Software       |
+| 666666601 | Sales          |
+| 666666601 | Research       |
+| 666666601 | QA             |
+| 666666601 | Networking     |
+| 666666601 | HR             |
+| 666666601 | Headquarters   |
+| 666666601 | Hardware       |
+| 666666601 | Administration |
+| 666666602 | Software       |
+| 666666602 | Sales          |
+| 666666602 | Research       |
+| 666666602 | QA             |
+| 666666602 | Networking     |
+| 666666602 | HR             |
+| 666666602 | Headquarters   |
+| 666666602 | Hardware       |
+| 666666602 | Administration |
+| 666666603 | Software       |
+| 666666603 | Sales          |
+| 666666603 | Research       |
+| 666666603 | QA             |
+| 666666603 | Networking     |
+| 666666603 | HR             |
+| 666666603 | Headquarters   |
+| 666666603 | Hardware       |
+| 666666603 | Administration |
+| 666666604 | Software       |
+| 666666604 | Sales          |
+| 666666604 | Research       |
+| 666666604 | QA             |
+| 666666604 | Networking     |
+| 666666604 | HR             |
+| 666666604 | Headquarters   |
+| 666666604 | Hardware       |
+| 666666604 | Administration |
+| 666666605 | Software       |
+| 666666605 | Sales          |
+| 666666605 | Research       |
+| 666666605 | QA             |
+| 666666605 | Networking     |
+| 666666605 | HR             |
+| 666666605 | Headquarters   |
+| 666666605 | Hardware       |
+| 666666605 | Administration |
+| 666666606 | Software       |
+| 666666606 | Sales          |
+| 666666606 | Research       |
+| 666666606 | QA             |
+| 666666606 | Networking     |
+| 666666606 | HR             |
+| 666666606 | Headquarters   |
+| 666666606 | Hardware       |
+| 666666606 | Administration |
+| 666666607 | Software       |
+| 666666607 | Sales          |
+| 666666607 | Research       |
+| 666666607 | QA             |
+| 666666607 | Networking     |
+| 666666607 | HR             |
+| 666666607 | Headquarters   |
+| 666666607 | Hardware       |
+| 666666607 | Administration |
+| 666666608 | Software       |
+| 666666608 | Sales          |
+| 666666608 | Research       |
+| 666666608 | QA             |
+| 666666608 | Networking     |
+| 666666608 | HR             |
+| 666666608 | Headquarters   |
+| 666666608 | Hardware       |
+| 666666608 | Administration |
+| 666666609 | Software       |
+| 666666609 | Sales          |
+| 666666609 | Research       |
+| 666666609 | QA             |
+| 666666609 | Networking     |
+| 666666609 | HR             |
+| 666666609 | Headquarters   |
+| 666666609 | Hardware       |
+| 666666609 | Administration |
+| 666666610 | Software       |
+| 666666610 | Sales          |
+| 666666610 | Research       |
+| 666666610 | QA             |
+| 666666610 | Networking     |
+| 666666610 | HR             |
+| 666666610 | Headquarters   |
+| 666666610 | Hardware       |
+| 666666610 | Administration |
+| 666666611 | Software       |
+| 666666611 | Sales          |
+| 666666611 | Research       |
+| 666666611 | QA             |
+| 666666611 | Networking     |
+| 666666611 | HR             |
+| 666666611 | Headquarters   |
+| 666666611 | Hardware       |
+| 666666611 | Administration |
+| 666666612 | Software       |
+| 666666612 | Sales          |
+| 666666612 | Research       |
+| 666666612 | QA             |
+| 666666612 | Networking     |
+| 666666612 | HR             |
+| 666666612 | Headquarters   |
+| 666666612 | Hardware       |
+| 666666612 | Administration |
+| 666666613 | Software       |
+| 666666613 | Sales          |
+| 666666613 | Research       |
+| 666666613 | QA             |
+| 666666613 | Networking     |
+| 666666613 | HR             |
+| 666666613 | Headquarters   |
+| 666666613 | Hardware       |
+| 666666613 | Administration |
+| 849934919 | Software       |
+| 849934919 | Sales          |
+| 849934919 | Research       |
+| 849934919 | QA             |
+| 849934919 | Networking     |
+| 849934919 | HR             |
+| 849934919 | Headquarters   |
+| 849934919 | Hardware       |
+| 849934919 | Administration |
+| 999999999 | Software       |
+| 999999999 | Sales          |
+| 999999999 | Research       |
+| 999999999 | QA             |
+| 999999999 | Networking     |
+| 999999999 | HR             |
+| 999999999 | Headquarters   |
+| 999999999 | Hardware       |
+| 999999999 | Administration |
+| 112244668 | Software       |
+| 112244668 | Sales          |
+| 112244668 | Research       |
+| 112244668 | QA             |
+| 112244668 | Networking     |
+| 112244668 | HR             |
+| 112244668 | Headquarters   |
+| 112244668 | Hardware       |
+| 112244668 | Administration |
+| 234234234 | Software       |
+| 234234234 | Sales          |
+| 234234234 | Research       |
+| 234234234 | QA             |
+| 234234234 | Networking     |
+| 234234234 | HR             |
+| 234234234 | Headquarters   |
+| 234234234 | Hardware       |
+| 234234234 | Administration |
+| 398172999 | Software       |
+| 398172999 | Sales          |
+| 398172999 | Research       |
+| 398172999 | QA             |
+| 398172999 | Networking     |
+| 398172999 | HR             |
+| 398172999 | Headquarters   |
+| 398172999 | Hardware       |
+| 398172999 | Administration |
++-----------+----------------+
+630 rows in set (0.00 sec)
+
+mysql> select all Salary from employee;
++--------+
+| Salary |
++--------+
+|  50000 |
+|  85000 |
+|  80000 |
+|  85000 |
+|  45000 |
+|  40000 |
+|  44000 |
+|  80000 |
+|  55000 |
+|  30000 |
+|  30000 |
+|  85000 |
+|  92000 |
+|  56000 |
+|  53000 |
+|  62500 |
+|  61000 |
+|  43000 |
+|  30000 |
+|  45000 |
+|  12000 |
+|  45000 |
+|  72000 |
+|  72500 |
+|  52000 |
+|  62000 |
+|  15000 |
+|  79000 |
+|  44000 |
+|  40000 |
+|  35000 |
+|  45000 |
+|  55000 |
+|  45000 |
+|  90000 |
+|  50000 |
+|  89000 |
+|  70000 |
+|  60000 |
+|  48000 |
+|  25000 |
+|  81000 |
+|  62000 |
+|  65000 |
+|  73500 |
+|  96000 |
+|  36000 |
+|  44000 |
+|  41000 |
+|  38000 |
+|  41500 |
+|  44500 |
+|  29000 |
+|  33000 |
+|  32000 |
+|  34000 |
+|  32000 |
+|  37000 |
+|  33500 |
+|  38000 |
+|  17000 |
+|  35500 |
+|  55000 |
+|  75000 |
+|  95000 |
+|  55000 |
+|  43000 |
+|  25000 |
+|  25000 |
+|  75500 |
++--------+
+70 rows in set (0.00 sec)
+
+mysql> select distinct Salary from employee;
++--------+
+| Salary |
++--------+
+|  50000 |
+|  85000 |
+|  80000 |
+|  45000 |
+|  40000 |
+|  44000 |
+|  55000 |
+|  30000 |
+|  92000 |
+|  56000 |
+|  53000 |
+|  62500 |
+|  61000 |
+|  43000 |
+|  12000 |
+|  72000 |
+|  72500 |
+|  52000 |
+|  62000 |
+|  15000 |
+|  79000 |
+|  35000 |
+|  90000 |
+|  89000 |
+|  70000 |
+|  60000 |
+|  48000 |
+|  25000 |
+|  81000 |
+|  65000 |
+|  73500 |
+|  96000 |
+|  36000 |
+|  41000 |
+|  38000 |
+|  41500 |
+|  44500 |
+|  29000 |
+|  33000 |
+|  32000 |
+|  34000 |
+|  37000 |
+|  33500 |
+|  17000 |
+|  35500 |
+|  75000 |
+|  95000 |
+|  75500 |
++--------+
+48 rows in set (0.00 sec)
+
+mysql> (select distinct Pnumber from project, department, employee where Dnum=Dnumber and Mgr_ssn=Ssn and Lname='Smith') union (select distinct Pnumber from project, works_on, employee where Pnumber=Pno and Essn=Ssn and Lname='Smith');
++---------+
+| Pnumber |
++---------+
+|       5 |
+|       6 |
++---------+
+2 rows in set (0.01 sec)
+
+mysql> select Fname, Lname frome employee where Address like '%Houston,TX%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee where Address like '%Houston,TX%'' at line 1
+mysql> select Fname, Lname from employee where Address like '%Houston,TX%';
+Empty set (0.00 sec)
+
+mysql> select E.Fname, E.Lname, 1.1*E.Salary as Increased_sal from employee as E, works_on as w, project as P where E.Ssn=W.Essn and W.Pno=P.Pnumber and P.Pname='Analysis'
+    -> ;
++---------+-----------+---------------+
+| Fname   | Lname     | Increased_sal |
++---------+-----------+---------------+
+| John    | Smith     |       33000.0 |
+| Richard | Koelbel   |       93500.0 |
+| Jake    | Sheen     |       57200.0 |
+| Jisha   | Carpenter |       16500.0 |
+| Joyce   | English   |       27500.0 |
+| Roy     | Lewallen  |       83050.0 |
++---------+-----------+---------------+
+6 rows in set (0.01 sec)
+
+mysql> select * from employee where (Salary between 30000 and 40000) and Dno=5;
++--------+-------+---------+-----------+------------+-------------------------+------+--------+-----------+-----+---------------+
+| Fname  | Minit | Lname   | Ssn       | Bdate      | Address                 | Sex  | Salary | Super_ssn | Dno | OverTimeCount |
++--------+-------+---------+-----------+------------+-------------------------+------+--------+-----------+-----+---------------+
+| John   | B     | Smith   | 123456789 | 1955-01-09 |  731 Fondren Houston TX | M    |  30000 | 333445555 |   5 |             0 |
+| Frank  | T     | Wong    | 333445555 | 1945-12-08 |  638 Voss Houston TX    | M    |  40000 | 888665555 |   5 |             0 |
+| Ramesh | K     | Narayan | 666884444 | 1952-09-15 |  971 Fire Oak Humble TX | M    |  38000 | 333445555 |   5 |             0 |
++--------+-------+---------+-----------+------------+-------------------------+------+--------+-----------+-----+---------------+
+3 rows in set (0.00 sec)
+
+mysql> select D.Dname, E.Lname, E.Fname, P.Pname from department D, employee E, works_on W, project P where D.Dnumber=E.Dno and E.Ssn=W.Essn and W.Pno=P.Pnumber order by D.Dname, E.Lname, E.Fname;
++----------------+-----------+-----------+------------------+
+| Dname          | Lname     | Fname     | Pname            |
++----------------+-----------+-----------+------------------+
+| Administration | Holmes    | Wilson    | FoodDistribution |
+| Administration | Holmes    | Wilson    | EntityAnnot      |
+| Administration | Holmes    | Wilson    | ConfigMgmt       |
+| Administration | Jabbar    | Ahmad     | Benefits         |
+| Administration | Jabbar    | Ahmad     | Computerization  |
+| Administration | Koelbel   | Richard   | Analysis         |
+| Administration | Koelbel   | Richard   | Computerization  |
+| Administration | Thirteen  | Cameron   | EntityAnnot      |
+| Administration | Thirteen  | Cameron   | EventManagement  |
+| Administration | Wallace   | Jennifer  | Benefits         |
+| Administration | Wallace   | Jennifer  | Reorganization   |
+| Administration | Zelaya    | Alicia    | Benefits         |
+| Administration | Zelaya    | Alicia    | Computerization  |
+| Hardware       | Bays      | Bonnie    | InkjetPrinters   |
+| Hardware       | Best      | Alec      | InkjetPrinters   |
+| Hardware       | Brand     | Tom       | DatabaseSystems  |
+| Hardware       | Carter    | Chris     | DatabaseSystems  |
+| Hardware       | Freed     | Alex      | InkjetPrinters   |
+| Hardware       | House     | Lisa      | MotherBoard      |
+| Hardware       | Kirkish   | Joseph    | LaserPrinters    |
+| Hardware       | Laurie    | Gregory   | Middleware       |
+| Hardware       | Moody     | Leonard   | MotherBoard      |
+| Hardware       | Moody     | Leonard   | EventManagement  |
+| Hardware       | Snedden   | Sam       | InkjetPrinters   |
+| Hardware       | Vile      | Andy      | DatabaseSystems  |
+| Hardware       | Vos       | Jenny     | DatabaseSystems  |
+| Hardware       | Wallis    | Evan      | DatabaseSystems  |
+| Hardware       | Zell      | Josh      | DatabaseSystems  |
+| Headquarters   | Carpenter | Jisha     | Analysis         |
+| HR             | Liang     | Percy     | FoodDistribution |
+| HR             | Liang     | Percy     | Advertizing      |
+| HR             | Linda     | Juan      | HumanResource    |
+| HR             | Mary      | willie    | HumanResource    |
+| Research       | English   | Joyce     | EventManagement  |
+| Research       | English   | Joyce     | Analysis         |
+| Research       | Miller    | James     | MotherBoard      |
+| Research       | Morgan    | Michael   | EntityAnnot      |
+| Research       | Narayan   | Ramesh    | FoodDistribution |
+| Research       | Smith     | John      | EventManagement  |
+| Research       | Smith     | John      | Analysis         |
+| Research       | Wong      | Frank     | Reorganization   |
+| Research       | Wong      | Frank     | FoodDistribution |
+| Research       | Wong      | Frank     | Computerization  |
+| Sales          | Bacher    | Red       | DatabaseSystems  |
+| Sales          | Bacher    | Red       | OperatingSystem  |
+| Sales          | Bacher    | Red       | Middleware       |
+| Sales          | Cucuou    | Sheldon   | HumanResource    |
+| Sales          | Drew      | Naveen    | OperatingSystem  |
+| Sales          | Hall      | Sammy     | OperatingSystem  |
+| Sales          | Head      | Arnold    | DatabaseSystems  |
+| Sales          | James     | John      | LaserPrinters    |
+| Sales          | Jarvis    | Jill      | InkjetPrinters   |
+| Sales          | Jones     | Megan     | Advertizing      |
+| Sales          | Joy       | Jennifer  | Middleware       |
+| Sales          | King      | Billie    | InkjetPrinters   |
+| Sales          | King      | Ray       | InkjetPrinters   |
+| Sales          | Kramer    | Jon       | LaserPrinters    |
+| Sales          | Leslie    | Lyle      | InkjetPrinters   |
+| Sales          | Lewallen  | Roy       | Advertizing      |
+| Sales          | Lewallen  | Roy       | Reorganization   |
+| Sales          | Lewallen  | Roy       | HumanResource    |
+| Sales          | Lewallen  | Roy       | InkjetPrinters   |
+| Sales          | Lewallen  | Roy       | Computerization  |
+| Sales          | Lewallen  | Roy       | EventManagement  |
+| Sales          | Lewallen  | Roy       | Analysis         |
+| Sales          | Lewallen  | Roy       | DatabaseSystems  |
+| Sales          | Lewallen  | Roy       | LaserPrinters    |
+| Sales          | Lewallen  | Roy       | Benefits         |
+| Sales          | Lewallen  | Roy       | Middleware       |
+| Sales          | Lewallen  | Roy       | OperatingSystem  |
+| Sales          | Lewallen  | Roy       | FoodDistribution |
+| Sales          | Maxfield  | Erin      | Advertizing      |
+| Sales          | Maxfield  | Erin      | DatabaseSystems  |
+| Sales          | Pataki    | Helga     | Middleware       |
+| Sales          | Reedy     | Carl      | OperatingSystem  |
+| Sales          | Small     | Gerald    | OperatingSystem  |
+| Sales          | Ted       | Kim       | DatabaseSystems  |
+| Software       | Ball      | Nandita   | LaserPrinters    |
+| Software       | Barbara   | Jose      | Middleware       |
+| Software       | Burklow   | Cindy     | Middleware       |
+| Software       | Chase     | Jeff      | Middleware       |
+| Software       | Ed        | John      | InkjetPrinters   |
+| Software       | Geller    | Zach      | SearchEngine     |
+| Software       | Grace     | Kim       | Middleware       |
+| Software       | Hall      | Debra     | ConfigMgmt       |
+| Software       | Hisel     | Christina | OperatingSystem  |
+| Software       | James     | Jared     | OperatingSystem  |
+| Software       | Jones     | Jon       | OperatingSystem  |
+| Software       | Knight    | Brad      | OperatingSystem  |
+| Software       | Mark      | Justin    | OperatingSystem  |
+| Software       | Sheen     | Jake      | ConfigMgmt       |
+| Software       | Sheen     | Jake      | Computerization  |
+| Software       | Sheen     | Jake      | Analysis         |
+| Software       | Wolowitz  | Penny     | SearchEngine     |
+| Software       | Yu        | Alex      | DataMining       |
++----------------+-----------+-----------+------------------+
+95 rows in set (0.00 sec)
+
+mysql> exit;

@@ -1,0 +1,44 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 110
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use nxk0459;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_nxk0459 |
++-------------------+
+| DEPARTMENT        |
+| DEPENDENT         |
+| DEPT_LOCATIONS    |
+| EMPLOYEE          |
+| PROJECT           |
+| WORKS_ON          |
++-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee where OverTimeCount > 0;
++---------+-------+----------+-----------+------------+----------------------------+------+--------+-----------+-----+---------------+
+| Fname   | Minit | Lname    | Ssn       | Bdate      | Address                    | Sex  | Salary | Super_ssn | Dno | OverTimeCount |
++---------+-------+----------+-----------+------------+----------------------------+------+--------+-----------+-----+---------------+
+| Cameron | D     | Thirteen | 111422203 | 2001-05-04 |  22 Univ Blvd Arlington TX | F    |  80000 | 987987987 |   4 |             2 |
+| Josh    | U     | Zell     | 222222201 | 1954-05-22 |  266 McGrady Milwaukee WI  | M    |  56000 | 222222200 |   7 |             1 |
+| Jake    | D     | Sheen    | 245239264 | 1954-12-25 |  20 North Co Arlington TX  | M    |  52000 | 112244668 |   6 |             2 |
+| Jeff    | H     | Chase    | 333333301 | 1970-01-07 |  15 Bradbury Sacramento CA | M    |  44000 | 333333300 |   6 |             1 |
+| Nandita | K     | Ball     | 555555501 | 1969-04-16 |  222 Howard Sacramento CA  | M    |  62000 | 555555500 |   6 |             1 |
+| Red     | A     | Bacher   | 666666613 | 1980-05-21 |  196 Elm Street Miami FL   | M    |  33500 | 666666612 |   8 |             1 |
++---------+-------+----------+-----------+------------+----------------------------+------+--------+-----------+-----+---------------+
+6 rows in set (0.00 sec)
+
+mysql> exit;

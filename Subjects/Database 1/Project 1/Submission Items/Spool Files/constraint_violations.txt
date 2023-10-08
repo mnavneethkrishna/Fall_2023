@@ -1,0 +1,72 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 109
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use nxk0459;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_nxk0459 |
++-------------------+
+| DEPARTMENT        |
+| DEPENDENT         |
+| DEPT_LOCATIONS    |
+| EMPLOYEE          |
+| PROJECT           |
+| WORKS_ON          |
++-------------------+
+6 rows in set (0.00 sec)
+
+
+Insert 3 records that violate different types of integrity constraints:
+a. Violate a UNIQUE constraint (e.g., inserting a duplicate SSN):
+
+mysql> INSERT INTO EMPLOYEE (Ssn, Fname, Lname, Dno)
+    -> VALUES ('123456789', 'John', 'Doe', 1);
+ERROR 1062 (23000): Duplicate entry '123456789' for key 'employee.PRIMARY'
+
+
+b. Violate a NOT NULL constraint (e.g., omitting a required value):
+mysql> INSERT INTO EMPLOYEE (Ssn, Fname, Lname)
+    -> VALUES ('987654321', 'Alice', 'Smith');
+ERROR 1364 (HY000): Field 'Dno' doesn't have a default value
+
+c. Violate a FOREIGN KEY constraint (e.g., inserting a project with an invalid department number):
+mysql> INSERT INTO PROJECT (Pnumber, Pname, Dnum)
+    -> VALUES (10, 'Invalid Project', 999);
+ERROR 1062 (23000): Duplicate entry '10' for key 'project.PRIMARY'
+
+Execute a command to delete a record that violates a referential integrity constraint:
+mysql> DELETE FROM EMPLOYEE WHERE Ssn = '123456789';
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`nxk0459`.`works_on`, CONSTRAINT `works_on_ibfk_1` FOREIGN KEY (`Essn`) REFERENCES `employee` (`Ssn`))
+
+
+Insert three new records that do not violate any integrity constraints:
+Insert valid records that satisfy all integrity constraints. For example:
+a. Insert a new department:
+mysql> INSERT INTO DEPARTMENT (Dnumber, Dname)
+    -> VALUES (6, 'New Department');
+ERROR 1364 (HY000): Field 'Mgr_ssn' doesn't have a default value
+
+
+b. Insert a new employee:
+mysql> INSERT INTO EMPLOYEE (Ssn, Fname, Lname, Dno)
+    -> VALUES ('999888777', 'Mary', 'Johnson', 2);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`nxk0459`.`employee`, CONSTRAINT `Emp_dno` FOREIGN KEY (`Dno`) REFERENCES `department` (`Dnumber`))
+
+c. Insert a new project:
+mysql> INSERT INTO PROJECT (Pnumber, Pname, Dnum)
+    -> VALUES (11, 'New Project', 3);
+ERROR 1062 (23000): Duplicate entry '11' for key 'project.PRIMARY'
+mysql> exit;

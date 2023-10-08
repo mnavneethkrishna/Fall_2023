@@ -1,13 +1,13 @@
 import mysql.connector
 import csv
-
+from datetime import datetime
 
 # Define your database connection parameters
 db_config = {
     "host": "localhost",
     "user": "root",
     "password": "*****",
-    "database": "Project_1",
+    "database": "nxk0459",
 }
 
 # Create a connection to the MySQL database
@@ -21,47 +21,58 @@ try:
     with open('EMPLOYEE.csv', 'r', newline='') as csv_file:
         csv_reader = csv.reader(csv_file)
         
-        # Skip the header row if present
-        next(csv_reader)
-        
         # Iterate through the rows in the .csv file
         for row in csv_reader:
             # Extract data from the row
             Fname = row[0]
-            Fname = Fname.replace("'","")
+            Fname = Fname.replace("'", "")
+            if Fname == "null":
+                Fname = ""
             Minit = row[1]
-            Minit = Minit.replace("'","")
-            Minit = Minit.replace(" ","")
+            Minit = Minit.replace("'", "")
+            Minit = Minit.replace(" ", "")
+            if Minit == "null":
+                Minit = ""
+
             Lname = row[2]
-            Lname = Lname.replace("'","")
-            Lname = Lname.replace(" ","")
+            Lname = Lname.replace("'", "")
+            Lname = Lname.replace(" ", "")
+            if Lname == "null":
+                Lname = ""
+
             Ssn = row[3]
-            Ssn = Ssn.replace("'","")
-            Ssn = Ssn.replace(" ","")
+            Ssn = Ssn.replace("'", "")
+            Ssn = Ssn.replace(" ", "")
+            if Ssn == "null":
+                Ssn = ""
             
             Birthday = row[4]
-            Birthday = Birthday.replace("'","")
-            Birthday = Birthday.replace(" ","")
+            Birthday = Birthday.replace("'", "")
+            Birthday = Birthday.replace(" ", "")
+            if Birthday == "null":
+                Birthday = ""
+            else:
+                Birthday = datetime.strptime(Birthday.strip(), '%d-%b-%Y').date()
 
-            Address = row[5] + " " +row[6] + " " + row[7]
+            Address = row[5] + " " + row[6] + " " + row[7]
             Address = Address.replace("'", "")
             
             Sex = row[8]
             Sex = Sex.replace("'", "")
-            Sex = Sex.replace(" ","")
+            Sex = Sex.replace(" ", "")
+            if Sex == "null":
+                Sex = ""
             
             Salary = row[9]
             Salary = float(Salary)
-            Salary = round(Salary, 2)
             
             Super_ssn = row[10]
-            Super_ssn = Super_ssn.replace("'","")
-            Super_ssn = Super_ssn.replace(" ","")
-
+            Super_ssn = Super_ssn.replace("'", "")
+            Super_ssn = Super_ssn.replace(" ", "")
 
             Dno = row[11]
-            Dno = Dno.replace("'","")
-            Dno = Dno.replace(" ","")
+            Dno = Dno.replace("'", "")
+            Dno = Dno.replace(" ", "")
             Dno = int(Dno)  
 
             # Define the SQL INSERT statement using parameterized query

@@ -1,5 +1,5 @@
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 20
+Your MySQL connection id is 94
 Server version: 8.1.0 Homebrew
 
 Copyright (c) 2000, 2023, Oracle and/or its affiliates.
@@ -17,23 +17,23 @@ mysql> show databases;
 | information_schema |
 | mysql              |
 | performance_schema |
-| Project_1          |
 | sys                |
 +--------------------+
-5 rows in set (0.03 sec)
+4 rows in set (0.02 sec)
 
-mysql> drop Project_1;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Project_1' at line 1
-mysql> drop database Project_1;
-Query OK, 6 rows affected (0.06 sec)
+mysql> create database nxk0459;
+Query OK, 1 row affected (0.01 sec)
 
-mysql> create database Project_1;
-Query OK, 1 row affected (0.00 sec)
-
-mysql> use Project_1;
+mysql> use nxk0459;
 Database changed
-mysql> source create_tables.sql
+mysql> source create_tables.sql;
+Query OK, 0 rows affected (0.03 sec)
+
 Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
 
 Query OK, 0 rows affected (0.01 sec)
 
@@ -41,24 +41,22 @@ Query OK, 0 rows affected (0.01 sec)
 
 Query OK, 0 rows affected (0.00 sec)
 
-Query OK, 0 rows affected (0.01 sec)
-
-Query OK, 0 rows affected (0.01 sec)
-
 Query OK, 0 rows affected (0.00 sec)
 
-Query OK, 0 rows affected (0.00 sec)
+mysql> show tables;
++-------------------+
+| Tables_in_nxk0459 |
++-------------------+
+| DEPARTMENT        |
+| DEPENDENT         |
+| DEPT_LOCATIONS    |
+| EMPLOYEE          |
+| PROJECT           |
+| WORKS_ON          |
++-------------------+
+6 rows in set (0.00 sec)
 
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+mysql> SELECT * FROM EMPLOYEE;
+Empty set (0.00 sec)
 
-Query OK, 0 rows affected (0.02 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-Query OK, 0 rows affected (0.01 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-Query OK, 0 rows affected (0.02 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-
-mysql> exit
+mysql> EXIT;
