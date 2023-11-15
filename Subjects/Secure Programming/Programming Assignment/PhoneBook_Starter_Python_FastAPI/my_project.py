@@ -3,8 +3,8 @@ from pydantic import BaseModel, validator
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import re
 from datetime import datetime
+import re
 
 app = FastAPI()
 
@@ -27,7 +27,18 @@ class Person(BaseModel):
 
     @validator("full_name")
     def validate_full_name(cls, value):
-        if not re.match(r"^[a-zA-Z\s,.\'-]+$", value):
+        person_name_regex = re.compile(
+            "^[A-Za-z]\\w{3,}|" +
+            "^[a-z]+$|^[A-Z]+$|" +
+            "[A-Za-z]\\w{3,}\\s[A-Za-z]\\w{2,}|" +
+            "[A-Za-z]\\w{3,},\\s[A-Za-z]\\w{2,}|" +
+            "[A-Za-z]\\w{3,},\\s[A-Za-z]\\w{2,}\\s[A-Za-z]\\w{3,}|" +
+            "[A-Za-z]\\w{3,}\\s[A-Za-z]'[A-Za-z]\\w{3,}|" +
+            "[A-Za-z]'[A-Za-z]\\w{2,},\\s[A-Za-z]\\w{3,}\\s[A-Za-z].+|" +
+            "[A-Za-z]\\w{3,}\\s[A-Za-z]\\w|" +
+            "[A-Za-z]\\w{3,}\\s[A-Za-z]'[A-Za-z]\\w{3,}-[A-Za-z]\\w{3,}$"
+        )
+        if not person_name_regex.match(value):
             raise ValueError("Invalid full name")
         return value
 

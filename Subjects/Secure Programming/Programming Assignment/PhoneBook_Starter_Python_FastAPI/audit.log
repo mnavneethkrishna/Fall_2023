@@ -8,3 +8,18 @@
 2023-11-14 18:12:32 - delete - Sangam Mitra
 2023-11-14 18:14:26 - list - None - HTTP Code: 200 - Message: Phonebook listed successfully
 2023-11-14 18:15:04 - delete - string - HTTP Code: 200 - Message: Person deleted successfully
+2023-11-15 09:36:17 - list - None - None - HTTP Code: 200 - Message: Phonebook listed successfully
+2023-11-15 09:36:31 - delete - Bruce Schneier - 12345 - HTTP Code: 200 - Message: Person deleted successfully
+2023-11-15 09:37:48 - list - None - None - HTTP Code: 200 - Message: Phonebook listed successfully
+2023-11-15 10:05:12 - add - Sangam Mitra - HTTP Code: 200 - Message: Person added successfully
+2023-11-15 10:05:28 - add - Sangam Mitra - HTTP Code: 200 - Message: Person added successfully
+2023-11-15 10:05:39 - list - None - HTTP Code: 200 - Message: Phonebook listed successfully
+2023-11-15 10:06:45 - add - L33t Hacker - HTTP Code: 200 - Message: Person added successfully
+2023-11-15 10:07:28 - add - Brad Everett Samuel Smith - HTTP Code: 400 - Message: Person already exists in the database
+2023-11-15 10:07:35 - add - Brad Everett Samuel Smith - HTTP Code: 200 - Message: Person added successfully
+2023-11-15 10:07:53 - add - select * from users; - HTTP Code: 200 - Message: Person added successfully
+2023-11-15 10:12:29 - list - None - HTTP Code: 200 - Message: Phonebook listed successfully
+2023-11-15 10:12:44 - delete - Sangam Mitra - HTTP Code: 200 - Message: Person deleted successfully
+2023-11-15 10:13:01 - delete - select * from users; - HTTP Code: 200 - Message: Person deleted successfully
+2023-11-15 10:13:29 - list - None - HTTP Code: 200 - Message: Phonebook listed successfully
+2023-11-15 10:15:47 - delete - L33t Hacker - HTTP Code: 200 - Message: Person deleted successfully
