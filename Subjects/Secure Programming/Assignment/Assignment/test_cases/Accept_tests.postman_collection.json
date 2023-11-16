@@ -1,0 +1,595 @@
+{
+	"info": {
+		"_postman_id": "126a7458-7c40-459b-ae48-dc00451bb02c",
+		"name": "Accept_Unit_Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27032011"
+	},
+	"item": [
+		{
+			"name": "insert valid name and phone 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Bruce Schneier\",\n    \"phonenumber\": \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Schneier, Bruce\",\n    \"phonenumber\": \"(703)111-2121\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Schneier, Bruce Wayne\",\n    \"phonenumber\": \"123-1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"O’Malley, John F.\",\n    \"phonenumber\": \"+1(703)111-2121\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"John O’Malley-Smith\",\n    \"phonenumber\": \"+32 (21) 212-2324\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Cher\",\n    \"phonenumber\": \"1(703)123-1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Navneeth Krishna\",\n    \"phonenumber\": \"011 701 111 1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Navneeth Krishna\",\n    \"phonenumber\": \"12345.12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert valid name and phone 9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Krishna, N\",\n    \"phonenumber\": \"011 1 703 111 1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/add",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list phonebook content",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5002/PhoneBook/list",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete using valid name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Krishna, N\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/deleteByName",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"deleteByName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete using no data name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"  pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"name\" : \"Krishna, Navnee\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/deleteByName",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"deleteByName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete using valid number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"phonenumber\": \"+32 (21) 212-2324\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/deleteByNumber",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"deleteByNumber"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete using no data number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"  pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"123@test\",\n    \"phonenumber\": \"011 701 111 0000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5002/PhoneBook/deleteByNumber",
+					"host": [
+						"localhost"
+					],
+					"port": "5002",
+					"path": [
+						"PhoneBook",
+						"deleteByNumber"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
