@@ -1,0 +1,47 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 25
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use project_2;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_project_2 |
++---------------------+
+| BOOK                |
+| BORROW              |
+| CARD                |
+| COPY                |
+| MEMBER              |
+| VISITS              |
++---------------------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT BOOK_ID AS "BOOK ID", M_SSN AS "MEMBER SSN", ISSUED_BY AS "ISSUED BY", ISSUE_DATE AS "ISSUE DATE", DUE_DATE AS "DUE DATE", RETURN_DATE AS "RETURN DATE", GRACE_PERIOD AS "GRACE PERIOD", STATUS FROM BORROW;
++---------+------------+-----------+------------+------------+-------------+--------------+----------+
+| BOOK ID | MEMBER SSN | ISSUED BY | ISSUE DATE | DUE DATE   | RETURN DATE | GRACE PERIOD | STATUS   |
++---------+------------+-----------+------------+------------+-------------+--------------+----------+
+|       1 |  123456789 | 123456789 | 2022-01-05 | 2022-01-20 | NULL        | NULL         | Borrowed |
+|       2 |  234567890 | 234567890 | 2022-02-20 | 2022-03-10 | NULL        | NULL         | Borrowed |
+|       3 |  345678901 | 345678901 | 2022-03-25 | 2022-04-15 | NULL        | NULL         | Borrowed |
+|       4 |  456789012 | 456789012 | 2022-04-15 | 2022-05-05 | NULL        | NULL         | Borrowed |
+|       5 |  567890123 | 567890123 | 2022-05-10 | 2022-05-30 | NULL        | NULL         | Borrowed |
+|       6 |  678901234 | 678901234 | 2022-06-25 | 2022-07-15 | NULL        | NULL         | Borrowed |
+|       7 |  789012345 | 789012345 | 2022-07-05 | 2022-07-25 | NULL        | NULL         | Borrowed |
+|       8 |  890123456 | 890123456 | 2022-08-10 | 2022-08-30 | NULL        | NULL         | Borrowed |
+|       9 |  901234567 | 901234567 | 2022-09-15 | 2022-10-05 | NULL        | NULL         | Borrowed |
++---------+------------+-----------+------------+------------+-------------+--------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> EXIT;

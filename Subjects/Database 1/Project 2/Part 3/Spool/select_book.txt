@@ -1,0 +1,68 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use project_2;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_project_2 |
++---------------------+
+| BOOK                |
+| BORROW              |
+| CARD                |
+| COPY                |
+| MEMBER              |
+| VISITS              |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT ISBN AS "BOOK ISBN", TITLE AS "BOOK TITLE", BINDING AS "BOOK BINDING", LANGUAGE AS "BOOK LANGUAGE", EDITION AS "BOOK EDITION", AUTHOR AS "BOOK AUTHOR", DESCRIPTION AS "BOOK DESCRIPTION", VOLUME AS "BOOK VOLUME", SUBJECT_AREA AS "SUBJECT AREA", BOOK_TYPE AS "BOOK TYPE", AVAILABILITY AS "BOOK AVAILABILITY", STATUS_TYPE AS "STATUS"  FROM BOOK;
++-----------+-------------------------------------------------------------------------+--------------+---------------+--------------+---------------------------+--------------------------------------------------------------------------+-------------+-------------------------+-------------+-------------------+-----------+
+| BOOK ISBN | BOOK TITLE                                                              | BOOK BINDING | BOOK LANGUAGE | BOOK EDITION | BOOK AUTHOR               | BOOK DESCRIPTION                                                         | BOOK VOLUME | SUBJECT AREA            | BOOK TYPE   | BOOK AVAILABILITY | STATUS    |
++-----------+-------------------------------------------------------------------------+--------------+---------------+--------------+---------------------------+--------------------------------------------------------------------------+-------------+-------------------------+-------------+-------------------+-----------+
+| 111222333 | Operating System Concepts                                               | Hardcover    | English       | 9th Edition  | Abraham Silberschatz      | A comprehensive guide to operating system concepts.                      | Vol 10      | Computer Science        | Textbook    | Y                 | Available |
+| 112233445 | Introduction to Artificial Intelligence                                 | Paperback    | English       | 1st Edition  | Wolfgang Ertel            | An introductory book on artificial intelligence concepts.                | Vol 19      | Artificial Intelligence | Textbook    | Y                 | Available |
+| 112273445 | Introduction to Natural Language Processing                             | Hardcover    | English       | 1st Edition  | Jacob Eisenstein          | An introductory book on natural language processing concepts.            | Vol 28      | Artificial Intelligence | Textbook    | Y                 | Available |
+| 123456789 | Introduction to Database Systems                                        | Paperback    | English       | 3rd Edition  | Michael Kifer             | A comprehensive guide to database systems.                               | Vol 1       | Computer Science        | Textbook    | Y                 | Available |
+| 222333444 | Introduction to Data Mining                                             | Paperback    | English       | 1st Edition  | Pang-Ning Tan             | An introductory book on data mining techniques.                          | Vol 11      | Data Science            | Textbook    | Y                 | Available |
+| 223344556 | Data Warehousing Fundamentals                                           | Hardcover    | English       | 1st Edition  | Paulraj Ponniah           | An introductory book on data warehousing concepts.                       | Vol 20      | Data Science            | Textbook    | Y                 | Available |
+| 223364556 | Big Data Analytics                                                      | Paperback    | English       | 1st Edition  | Frank J. Ohlhorst         | A guide to big data analytics concepts and techniques.                   | Vol 29      | Big Data                | Textbook    | Y                 | Available |
+| 234567890 | Data Science for Beginners                                              | Hardcover    | English       | 1st Edition  | Alice Johnson             | An introductory book on data science concepts.                           | Vol 2       | Data Science            | Textbook    | Y                 | Available |
+| 333444555 | C++ Programming: From Problem Analysis to Program Design                | Hardcover    | English       | 8th Edition  | D.S. Malik                | A comprehensive guide to C++ programming language.                       | Vol 12      | Computer Science        | Textbook    | Y                 | Available |
+| 334445667 | Head First Design Patterns                                              | Hardcover    | English       | 1st Edition  | Eric Freeman              | A guide to design patterns in software development.                      | Vol 30      | Software Development    | Textbook    | Y                 | Available |
+| 334455667 | JavaScript: The Good Parts                                              | Paperback    | English       | 1st Edition  | Douglas Crockford         | A guide to the good parts of the JavaScript language.                    | Vol 21      | Web Development         | Non-fiction | Y                 | Available |
+| 345678901 | Programming in Java                                                     | Paperback    | English       | 2nd Edition  | James Smith               | A guide to Java programming language.                                    | Vol 3       | Computer Science        | Textbook    | Y                 | Available |
+| 444555666 | Computer Networks: A Top-Down Approach                                  | Paperback    | English       | 7th Edition  | James Kurose              | A guide to computer network concepts and protocols.                      | Vol 13      | Computer Science        | Textbook    | Y                 | Available |
+| 445566778 | Introduction to Cryptography                                            | Hardcover    | English       | 3rd Edition  | Johannes Buchmann         | A comprehensive guide to cryptography principles.                        | Vol 22      | Computer Science        | Textbook    | Y                 | Available |
+| 456789012 | Artificial Intelligence: A Modern Approach                              | Hardcover    | English       | 4th Edition  | Stuart Russell            | A comprehensive guide to AI concepts and techniques.                     | Vol 4       | Artificial Intelligence | Textbook    | Y                 | Available |
+| 555666777 | Software Engineering: A Practitioners Approach                          | Hardcover    | English       | 9th Edition  | Roger Pressman            | A comprehensive guide to software engineering principles.                | Vol 14      | Computer Science        | Textbook    | Y                 | Available |
+| 556677889 | R for Data Science                                                      | Paperback    | English       | 1st Edition  | Hadley Wickham            | A guide to data science using the R programming language.                | Vol 23      | Data Science            | Textbook    | Y                 | Available |
+| 567890123 | Web Development Basics                                                  | Paperback    | English       | 1st Edition  | Emily Brown               | A beginner-friendly book on web development.                             | Vol 5       | Web Development         | Textbook    | Y                 | Available |
+| 666777888 | Data Structures and Algorithms in Python                                | Paperback    | English       | 1st Edition  | Michael T. Goodrich       | A guide to data structures and algorithms using Python.                  | Vol 15      | Computer Science        | Textbook    | Y                 | Available |
+| 667788990 | The Pragmatic Programmer: Your Journey to Mastery                       | Hardcover    | English       | 1st Edition  | Dave Thomas               | A guide to becoming a pragmatic programmer.                              | Vol 24      | Computer Science        | Non-fiction | Y                 | Available |
+| 678901234 | Linear Algebra and Its Applications                                     | Hardcover    | English       | 5th Edition  | David Lay                 | A comprehensive textbook on linear algebra.                              | Vol 6       | Mathematics             | Textbook    | Y                 | Available |
+| 777888999 | Big Data: A Revolution That Will Transform How We Live, Work, and Think | Hardcover    | English       | 1st Edition  | Viktor Mayer-Schönberger  | A book on the impact of big data on society.                             | Vol 16      | Big Data                | Non-fiction | Y                 | Available |
+| 778899001 | Database Systems: Design, Implementation, & Management                  | Paperback    | English       | 14th Edition | Carlos Coronel            | A comprehensive guide to database systems.                               | Vol 25      | Computer Science        | Textbook    | Y                 | Available |
+| 789012345 | Python Programming for Beginners                                        | Paperback    | English       | 1st Edition  | Mark Turner               | A beginners guide to Python programming language.                        | Vol 7       | Computer Science        | Textbook    | Y                 | Available |
+| 888999000 | The Elements of Statistical Learning                                    | Paperback    | English       | 2nd Edition  | Trevor Hastie             | A comprehensive guide to statistical learning techniques.                | Vol 17      | Statistics              | Textbook    | Y                 | Available |
+| 889900112 | Introduction to Machine Learning with Python                            | Hardcover    | English       | 1st Edition  | Andreas C. Müller         | An introductory book on machine learning with Python.                    | Vol 26      | Machine Learning        | Textbook    | Y                 | Available |
+| 890123456 | Machine Learning: A Probabilistic Perspective                           | Hardcover    | English       | 1st Edition  | Kevin Murphy              | A comprehensive guide to machine learning with a probabilistic approach. | Vol 8       | Machine Learning        | Textbook    | Y                 | Available |
+| 901234567 | Network Security Essentials                                             | Paperback    | English       | 6th Edition  | William Stallings         | A guide to network security concepts and techniques.                     | Vol 9       | Computer Science        | Textbook    | Y                 | Available |
+| 990011223 | Linux Pocket Guide                                                      | Paperback    | English       | 3rd Edition  | Daniel J. Barrett         | A pocket guide for Linux commands and usage.                             | Vol 27      | Computer Science        | Non-fiction | Y                 | Available |
+| 999000111 | Computer Architecture: A Quantitative Approach                          | Hardcover    | English       | 6th Edition  | John L. Hennessy          | A comprehensive guide to computer architecture principles.               | Vol 18      | Computer Science        | Textbook    | Y                 | Available |
++-----------+-------------------------------------------------------------------------+--------------+---------------+--------------+---------------------------+--------------------------------------------------------------------------+-------------+-------------------------+-------------+-------------------+-----------+
+30 rows in set (0.01 sec)
+
+mysql> EXIT;

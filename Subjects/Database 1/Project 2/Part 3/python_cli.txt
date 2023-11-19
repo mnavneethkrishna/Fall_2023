@@ -1,0 +1,45 @@
+navneethkrishna@Navneeths-MacBook-Pro Part 3 % python3 python_cli.py                 
+Enter information for a new member:
+SSN: 233564
+Name: Michael Addams 
+Home Address: 400 Southern St
+Campus Address: 500 Nedderman Dr
+Phone Number: 89508-42802
+Member Type: Student
+Grace Period: 7
+Borrow Period: 14
+Employee Type: Student
+Staff Type: NULL
+Enter information for a new book:
+ISBN: 977868
+Title: Shakthi and Shaktha
+Binding: Paperback
+Language: English
+Edition: 1
+Author: John Woodroffee
+Description: A book about tantra
+Volume: 1
+Subject Area: Misc
+Book Type: Non Academic
+Availability (Y/N): Y
+Status Type: Available
+Enter information for a new borrow:
+Book ID: 4
+Member SSN: 233564
+Issued By (Staff SSN): 456789012
+Issue Date (YYYY-MM-DD): 2023-11-05
+Due Date (YYYY-MM-DD): 2023-11-28
+Enter information to handle the return of a book:
+Book ID: 4
+Member SSN: 233564
+Issue Date (YYYY-MM-DD): 2023-11-05
+Return Date (YYYY-MM-DD): 2023-11-19
+Return Receipt:
+Book ID: 4
+Member SSN: 233564
+Issue Date: 2023-11-05
+Return Date: 2023-11-19
+Enter information to renew membership:
+Member SSN: 123456789
+New Expiry Date (YYYY-MM-DD): 2023-12-31
+Membership renewed for Member SSN: 123456789

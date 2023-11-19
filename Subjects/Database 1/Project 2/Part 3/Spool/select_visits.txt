@@ -1,0 +1,48 @@
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 26
+Server version: 8.1.0 Homebrew
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use project_2;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_project_2 |
++---------------------+
+| BOOK                |
+| BORROW              |
+| CARD                |
+| COPY                |
+| MEMBER              |
+| VISITS              |
++---------------------+
+6 rows in set (0.01 sec)
+
+mysql> SELECT M_SSN AS "MEMEBER SSN", CHECK_IN AS "CHECK IN", CHECK_OUT AS "CHECK OUT", NAME, PASS_ID AS "PASS ID", VISITOR_TYPE AS "VISITOR TYPE", VALIDITY_DATE AS "VALIDITY DATE" FROM VISITS;
++-------------+------------+------------+----------------+---------+--------------+---------------+
+| MEMEBER SSN | CHECK IN   | CHECK OUT  | NAME           | PASS ID | VISITOR TYPE | VALIDITY DATE |
++-------------+------------+------------+----------------+---------+--------------+---------------+
+|   123123123 | 2022-10-25 | 2022-10-28 | Sarah White    |      10 | Guest        | 2022-10-28    |
+|   123456789 | 2022-01-10 | 2022-01-15 | John Doe       |       1 | Guest        | 2022-01-15    |
+|   234567890 | 2022-02-25 | 2022-02-28 | Jane Smith     |       2 | Guest        | 2022-02-28    |
+|   345678901 | 2022-03-12 | 2022-03-15 | Bob Johnson    |       3 | Guest        | 2022-03-15    |
+|   456789012 | 2022-04-20 | 2022-04-25 | Alice Brown    |       4 | Guest        | 2022-04-25    |
+|   567890123 | 2022-05-05 | 2022-05-10 | Charlie Wilson |       5 | Guest        | 2022-05-10    |
+|   678901234 | 2022-06-18 | 2022-06-20 | Eva Davis      |       6 | Guest        | 2022-06-20    |
+|   789012345 | 2022-07-22 | 2022-07-25 | Frank Miller   |       7 | Guest        | 2022-07-25    |
+|   890123456 | 2022-08-14 | 2022-08-18 | Grace Turner   |       8 | Guest        | 2022-08-18    |
+|   901234567 | 2022-09-30 | 2022-10-02 | Henry Lee      |       9 | Guest        | 2022-10-02    |
++-------------+------------+------------+----------------+---------+--------------+---------------+
+10 rows in set (0.00 sec)
+
+mysql> EXIT;
